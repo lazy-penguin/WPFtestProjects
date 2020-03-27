@@ -1,0 +1,92 @@
+﻿<UserControl x:Class="CashDispenserGUI.PutControl"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:cashDispenserViewModel="clr-namespace:CashDispenserViewModel;assembly=CashDispenserViewModel"
+      mc:Ignorable="d" 
+      d:DesignHeight="250">
+
+    <UserControl.Resources>
+        <Style x:Key="BillImage" TargetType="Image">
+            <Setter Property="Width" Value="40"/>
+            <Setter Property="Margin" Value="3,0,3,0"/>
+            <Setter Property="Source" Value="resources/images/money.png"/>
+        </Style>
+
+        <Style TargetType="Button" x:Key="Plus">
+            <Setter Property="Width" Value="15"/>
+            <Setter Property="Height" Value="15"/>
+            <Setter Property="Margin" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                            <Border>
+                                <Image Source="resources/images/plus.png"/>
+                            </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="Button" x:Key="Minus">
+            <Setter Property="Width" Value="15"/>
+            <Setter Property="Height" Value="15"/>
+            <Setter Property="Margin" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                            <Border>
+                                <Image Source="resources/images/minus.png"/>
+                            </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+        <Grid HorizontalAlignment="Center" Margin="0, 0, 0, 5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0" Text="Amount of money:" Style="{StaticResource TextBlockStyle}"/>
+            <TextBlock Grid.Column="1" Text="{Binding AmountOfMoney, UpdateSourceTrigger=PropertyChanged}"
+                       Style="{StaticResource TextBlockStyle}"/>
+        </Grid>
+
+        <ListBox ItemsSource="{Binding BillsView}" Width="200" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                 d:DataContext="{d:DesignInstance {x:Type cashDispenserViewModel:PutViewModel}}">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <Image Grid.Column="0" Grid.Row="0" Style="{StaticResource BillImage}"/>
+                        <Label Grid.Column="1" Grid.Row="0" Content="{Binding BillCount}"/>
+                        <Label Grid.Column="0" Grid.Row="1" Content="{Binding Denomination}"/>
+                        <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal">
+                            <Button Style="{StaticResource Plus}" Command="{Binding AddCommand}"/>
+                            <Button Style="{StaticResource Minus}"  Command="{Binding SubtractCommand}"/>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button Content="OK" Command="{Binding PutCommand}" Style="{StaticResource OtherButtonsStyle}"/>
+    </StackPanel>
+</UserControl>

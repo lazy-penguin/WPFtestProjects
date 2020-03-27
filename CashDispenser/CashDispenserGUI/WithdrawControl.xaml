@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="CashDispenserGUI.WithdrawControl"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d">
+
+    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Column="0" Grid.Row="0" Text="Balance:" Style="{StaticResource TextBlockStyle}"/>
+            <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding CashDispenser.Balance}" Style="{StaticResource TextBlockStyle}"/>
+
+            <TextBlock Grid.Column="0" Grid.Row="1" Text="Amount of money:" Style="{StaticResource TextBlockStyle}"/>
+            <TextBox Grid.Column="1" Grid.Row="1" MinWidth="50" MaxWidth="150" Height="20" Margin="5"
+                     Text="{Binding AmountOfMoney, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                     IsReadOnly="{Binding IsSumReadOnly}" Style="{StaticResource ValidationStyle}"/>
+
+            <Button Grid.Column="1" Grid.Row="2" Content="Choose bills" Command="{Binding ChooseBillsCommand}" Style="{StaticResource OtherButtonsStyle}"
+                    IsEnabled="{Binding IsButtonsEnable}"/>
+        </Grid>
+
+        <ContentPresenter Content="{Binding BillsViewModel}"/>
+
+        <Button Content="OK" Command="{Binding WithdrawCommand}" Style="{StaticResource OtherButtonsStyle}"
+                IsEnabled="{Binding IsButtonsEnable}"/>
+    </StackPanel>
+</UserControl>

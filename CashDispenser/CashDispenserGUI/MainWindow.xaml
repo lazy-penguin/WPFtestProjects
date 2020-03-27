@@ -1,0 +1,77 @@
+﻿<Window x:Class="CashDispenserGUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:CashDispenserViewModel;assembly=CashDispenserViewModel"
+        xmlns:local="clr-namespace:CashDispenserGUI"
+        xmlns:resources="clr-namespace:CashDispenserGUI.resources"
+        mc:Ignorable="d"
+        Title="Cash Dispenser" SizeToContent="WidthAndHeight" ResizeMode="NoResize"
+        MinWidth="350" MinHeight="350"
+        WindowStartupLocation="CenterScreen"
+        Icon="resources/images/icon.png"
+        DataContext="vm:MainViewModel">
+
+    <Window.Resources>
+        <resources:CustomBooleanToVisibleConverter x:Key="BooleanToVisibilityConverter"/>
+
+        <DataTemplate DataType="{x:Type vm:BalanceViewModel}">
+            <local:BalanceControl/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:ChooseBillsViewModel}">
+            <local:ChooseBillsView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:PutViewModel}">
+            <local:PutControl/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:StateViewModel}">
+            <local:StateControl/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:WithdrawViewModel}">
+            <local:WithdrawControl/>
+        </DataTemplate>
+
+        <Style TargetType="Button">
+            <Setter Property="FontFamily" Value="Verdana"/>
+            <Setter Property="Margin" Value="10, 10, 0, 10"/>
+            <Setter Property="MinWidth" Value="100"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/resources/images/background.jpg" Stretch="UniformToFill"/>
+        </Grid.Background>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <ContentPresenter Grid.Column="0" Content="{Binding CurrentContentViewModel}"/>
+
+        <StackPanel Grid.Column="1">
+            <Button Content="Balance" Command="{Binding BalanceCommand}"
+                    Visibility="{Binding IsBalanceVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+
+            <Button Content="Put" Command="{Binding PutCommand}"
+                    Visibility="{Binding IsPutVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
+                    IsEnabled="{Binding IsPutEnable}"/>
+
+            <Button Content="Withdraw" Command="{Binding WithdrawCommand}"
+                    Visibility="{Binding IsWithdrawVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
+                    IsEnabled="{Binding IsWithdrawEnable}"/>
+
+            <Button Content="State" Command="{Binding StateCommand}"
+                    IsEnabled="{Binding IsStateEnable}"/>
+
+            <Button Content="Back" Command="{Binding BackCommand}"
+                    IsEnabled="{Binding IsBackEnable}"/>
+
+            <Button Content="Exit" Click="ExitClick"/>
+        </StackPanel>
+    </Grid>
+</Window>

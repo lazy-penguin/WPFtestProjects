@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29306.81
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashDispenserGUI", "CashDispenserGUI\CashDispenserGUI.csproj", "{6C58F7CD-8DED-4F0E-9A68-772A6684FA9A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashDispenserModel", "CashDispenser\CashDispenserModel.csproj", "{E4B44B7C-535C-45EA-AAB3-B32A0BF0F341}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashDispenserViewModel", "CashDispenserViewModel\CashDispenserViewModel.csproj", "{EDF76FC9-E632-483B-9BE9-31492D39F802}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BillsDeclaration", "BillsDeclaration\BillsDeclaration.csproj", "{9518AF90-3BEE-496A-A625-D631B340EB93}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6C58F7CD-8DED-4F0E-9A68-772A6684FA9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C58F7CD-8DED-4F0E-9A68-772A6684FA9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C58F7CD-8DED-4F0E-9A68-772A6684FA9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C58F7CD-8DED-4F0E-9A68-772A6684FA9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4B44B7C-535C-45EA-AAB3-B32A0BF0F341}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4B44B7C-535C-45EA-AAB3-B32A0BF0F341}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4B44B7C-535C-45EA-AAB3-B32A0BF0F341}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4B44B7C-535C-45EA-AAB3-B32A0BF0F341}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDF76FC9-E632-483B-9BE9-31492D39F802}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDF76FC9-E632-483B-9BE9-31492D39F802}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDF76FC9-E632-483B-9BE9-31492D39F802}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDF76FC9-E632-483B-9BE9-31492D39F802}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9518AF90-3BEE-496A-A625-D631B340EB93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9518AF90-3BEE-496A-A625-D631B340EB93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9518AF90-3BEE-496A-A625-D631B340EB93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9518AF90-3BEE-496A-A625-D631B340EB93}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {491432CD-3CB1-42AD-8550-39D139E85788}
+	EndGlobalSection
+EndGlobal
